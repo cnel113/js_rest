@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Comic</title>
+  </head>
+  <body>
+    <div class='page'>
+        <p>Comic</p>
+        <div id="comic">No comic</div>
+    </div>
+  </body>
+  
+  <script>
+      const myurl = "https://xkcd.vercel.app/?comic=latest";
+      console.log(myurl);
+      fetch(myurl)
+        .then(function(response) {
+            return response.json();
+        }).then (function(json) {
+                console.log(json); 
+                let everything = "<p>";
+                everything += json["alt"];
+                everything += "</p>" + '<img src="'+json["img"]+'"></img>"';
+                document.getElementById("comic").innerHTML = everything;
+            });
+    
+  </script>
+</html>
